@@ -1,0 +1,5 @@
+{
+  "ConnectionsString": {
+    "EagleSportsDB": "server=localhost;uid=root;pwd=Eagle4Sis@;database=EagleSportsDB"
+  }
+}
