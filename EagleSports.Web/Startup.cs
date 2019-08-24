@@ -1,4 +1,6 @@
+using EagleSports.SisRa.Domain.Interfaces;
 using EagleSports.SisRa.Repository.Context;
+using EagleSports.SisRa.Repository.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,8 +30,15 @@ namespace EagleSports.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             var connectionString = Configuration.GetConnectionString("EagleSportsDB");
             services.AddDbContext<SisRaContext>(option => 
-                                                option.UseMySql(connectionString,
+                                                option.UseLazyLoadingProxies()
+                                                .UseMySql(connectionString,
                                                                     m =>m.MigrationsAssembly("EagleSports.SisRa.Repository")));
+
+            services.AddScoped<IAtletaRepository, AtletaRepository>();
+            services.AddScoped<IEsporteRepository, EsporteRepository>();
+            services.AddScoped<IHistoricoVideoRepository, HistoricoVideoRepository>();
+            // services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

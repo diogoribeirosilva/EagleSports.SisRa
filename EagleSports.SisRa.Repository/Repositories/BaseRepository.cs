@@ -1,45 +1,49 @@
 ﻿using EagleSports.SisRa.Domain.Interfaces;
+using EagleSports.SisRa.Repository.Context;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace EagleSports.SisRa.Repository.Repositories
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        public BaseRepository()
-        {
+        protected readonly SisRaContext _sisRaContext;
 
+        public BaseRepository(SisRaContext sisRaContext)
+        {
+            _sisRaContext = sisRaContext;
         }
         public void Adicionar(TEntity entity)
         {
-            throw new NotImplementedException();
+            _sisRaContext.Set<TEntity>().Add(entity);
+            _sisRaContext.SaveChanges();
         }
 
         public void Atualizar(TEntity entity)
         {
-            throw new NotImplementedException();
+            _sisRaContext.Set<TEntity>().Update(entity);
+            _sisRaContext.SaveChanges();
         }
-
-
-
-        public void ObterPorId(int id)
+        public TEntity ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            return _sisRaContext.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            throw new NotImplementedException();
+            return _sisRaContext.Set<TEntity>().ToList();
         }
 
         public void Remover(TEntity entity)
         {
-            throw new NotImplementedException();
+            _sisRaContext.Remove(entity);
+            _sisRaContext.SaveChanges();
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _sisRaContext.Dispose();
         }
     }
 }

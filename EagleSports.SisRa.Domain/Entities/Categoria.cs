@@ -8,8 +8,10 @@ namespace EagleSports.SisRa.Domain.Entities
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public int IdAtleta { get; set; }
-        public int IdEsporte { get; set; }
+        public int AtletaId { get; set; }
+        public virtual Atleta Atleta { get; set; }
+        public int EsporteId { get; set; }
+        public Esporte Esporte { get; set; }
 
         public override void Validate()
         {

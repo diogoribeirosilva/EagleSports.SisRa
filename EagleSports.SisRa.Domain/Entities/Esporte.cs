@@ -9,6 +9,8 @@ namespace EagleSports.SisRa.Domain.Entities
         public int Id { get; set; }
 
         public string Nome { get; set; }
+        public int AtletaId { get; set; }
+        public virtual Atleta Atleta { get; set; }
 
         public override void Validate()
         {

@@ -19,8 +19,8 @@ namespace EagleSports.SisRa.Domain.Entities
         public string Skill { get; set; }
         public string Avaliador { get; set; }
         public string Telefone { get; set; }
-        public ICollection<Esporte> IdEsporte { get; set; }
-        public ICollection<Categoria> IdCategoria { get; set; }
+        public virtual ICollection<Esporte> Esportes { get; set; }
+        public virtual ICollection<Categoria> Categorias { get; set; }
 
         public override void Validate()
         {

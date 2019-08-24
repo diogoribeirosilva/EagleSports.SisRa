@@ -11,7 +11,24 @@ namespace EagleSports.SisRa.Repository.Config
     {
         public void Configure(EntityTypeBuilder<HistoricoVideo> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(u => u.Id);
+
+            builder
+                .Property(u => u.UrlVideo)
+                .HasMaxLength(400)
+                .IsRequired();
+
+            //builder
+            //    .Property(u => u.IdAtleta)
+            //    .HasMaxLength(50);
+
+            //builder
+            //    .Property(u => u.IdEsporte)
+            //    .IsRequired()
+            //    .HasMaxLength(50);
+
+
+
         }
     }
 }

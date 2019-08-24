@@ -25,6 +25,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\atleta\atleta.component.ts" />
+    <None Remove="ClientApp\src\app\categoria\categoria.component.ts" />
+    <None Remove="ClientApp\src\app\esporte\esporte.component.ts" />
+    <None Remove="ClientApp\src\app\historicoVideos\historicoVideos.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EagleSports.SisRa.Repository\EagleSports.SisRa.Repository.csproj" />
   </ItemGroup>
 
@@ -32,6 +39,13 @@
     <Content Update="config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\atleta\atleta.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\categoria\categoria.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\esporte\esporte.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\historicoVideos\historicoVideos.component.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

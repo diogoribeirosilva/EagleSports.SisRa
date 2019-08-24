@@ -11,7 +11,20 @@ namespace EagleSports.SisRa.Repository.Config
     {
         public void Configure(EntityTypeBuilder<Categoria> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(u => u.Id);
+
+            builder
+                .Property(u => u.Nome)
+                .HasMaxLength(3)
+                .HasColumnType("number");
+
+
+            //builder
+            //    .Property(u => u.IdEsporte)
+            //    .IsRequired()
+            //    .HasMaxLength(50);
+
+
         }
     }
 }

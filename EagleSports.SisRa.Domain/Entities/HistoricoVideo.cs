@@ -8,20 +8,21 @@ namespace EagleSports.SisRa.Domain.Entities
     {
         public int Id { get; set; }
         public string UrlVideo { get; set; }
-        public int IdAtleta { get; set; }
-        public int IdEsporte { get; set; }
-
+        public int AtletaId { get; set; }
+        public virtual Atleta Atleta { get; set; }
+        public int EsporteId { get; set; }
+        public virtual Esporte Esporte { get; set; }
         public override void Validate()
         {
             if (String.IsNullOrEmpty(UrlVideo))
             {
                 MensagemValidacao.Add("Url do video é obrigatório");
             }
-            if (IdEsporte == 0)
+            if (EsporteId == 0)
             {
                 MensagemValidacao.Add("É obrigatório selecionar um esporte");
             }
-            if (IdAtleta == 0)
+            if (AtletaId == 0)
             {
                 MensagemValidacao.Add("É obrigatório selecionar um atleta");
             }
